@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 
 <head>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-178132094-1"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -14,7 +13,6 @@
   </script>
 
   <meta charset="UTF-8" />
-  <!--  <meta name="viewport" content="width=device-width, initial-scale=1" />-->
   <meta name="viewport" content="width=1024" />
   <title>CTINEXUS: Automatic Cyber Threat Intelligence Knowledge Graph Construction Using Large Language Models</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -88,8 +86,6 @@
       </div>
     </nav>
 
-
-  <!-- <hr class="toprule" /> -->
   <header>
     <div class="header-block container">
       <div class="logo"><img src="./images/logo.png" alt="logo" /></div>
@@ -99,7 +95,6 @@
       </div>
     </div>
   </header>
-  <!-- <hr class="toprule" /> -->
 
   <section class="hero">
     <div class="hero-body">
@@ -157,31 +152,11 @@
                       <span>Dataset</span>
                   </a>
                   </span>
-  
-                  <!-- <span class="link-block">
-                      <a href="./leaderboard.html"
-                      class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon">
-                          <i class="fa fa-trophy"></i>
-                      </span>
-                      <span>Leaderboard</span>
-                  </a>
-                  </span> -->
-  
-                  <!-- <span class="link-block">
-                      <a href="./demo.html"
-                      class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon">
-                          <i class="fas fa-search"></i>
-                      </span>
-                      <span>Sample Explorer</span>
-                  </a>
-                  </span> -->
+
               </div>
             </div>
   
             <br>
-            <!-- <img src="./images/examples.png" width="100%"/> -->
   
           </div>
         </div>
@@ -193,37 +168,8 @@
     <section id="introduction">
       <div class="overview">
         <p class="doublealign">
-          <!-- The goal of <strong>RobustBench</strong> is to systematically track
-          the <em>real</em> progress in adversarial robustness. There are
-          already
-          <a href="https://nicholas.carlini.com/writing/2019/all-adversarial-example-papers.html">more than 3&#39;000
-            papers</a>
-          on this topic, but it is still unclear which approaches really work
-          and which only lead to
-          <a href="https://arxiv.org/abs/1802.00420">overestimated robustness</a>. We start from benchmarking common
-          corruptions,
-          \(\ell_\infty\)- and
-          \(\ell_2\)-robustness since these are the most studied settings in the
-          literature. We use
-          <a href="https://github.com/fra31/auto-attack">AutoAttack</a>, an
-          ensemble of white-box and black-box attacks, to standardize the
-          evaluation (for details see <a href="https://arxiv.org/abs/2010.09670">our paper</a>) of the \(\ell_p\)
-          robustness and
-          CIFAR-10-C for the evaluation of robustness to common corruptions. Additionally,
-          we open source the
-          <a href="https://github.com/RobustBench/robustbench">RobustBench library</a>
-          that contains models used for the leaderboard to facilitate their
-          usage for downstream applications. 
-          <br><br> -->
           <strong>CTINexus</strong> is a novel framework that automatically transforms unstructured cyber threat intelligence into a rich, connected <em>cybersecurity knowledge graph (CSKG)</em>. By leveraging in-context learning with large language models, it extracts relevant cybersecurity entities and their relationships from threat reports—without requiring extensive labeled data or specialized rule sets. CTINexus adapts quickly to new and evolving threats, consolidates information through hierarchical entity alignment, and infers hidden links among distant parts of a report to build comprehensive, high-quality cybersecurity knowledge graphs for more effective threat monitoring and analysis.
           <br><br>
-
-          <!-- To prevent potential overadaptation of new defenses to AutoAttack, we also welcome external evaluations based
-          on <em>adaptive attacks</em>, especially where AutoAttack <a href="https://github.com/fra31/auto-attack/blob/master/flags_doc.md">flags</a>
-          a potential overestimation of robustness. For each model, we are interested in the best known robust accuracy
-          and see AutoAttack and adaptive attacks as complementary. -->
-
-          <!-- <br><br> -->
           <strong> News:</strong>
           <ul>
             <li>  <strong>Feb 2025:</strong> 
@@ -233,74 +179,7 @@
               We now support open-source models, including the Llama and QWen series, through <a href="https://ollama.com/">Ollama</a>.
              </li>
           </ul>
-
-
-
         </p>
-        <div class="flexbox-container features">
-          <div class="element">
-            <div class="icon">
-              <img src="https://img.icons8.com/wired/100/000000/leaderboard.png" />
-            </div>
-            <p>
-              Up-to-date leaderboard based <br />
-              on 120+ models
-            </p>
-          </div>
-          <div class="element">
-            <div class="icon">
-              <img src="https://img.icons8.com/ios-glyphs/80/000000/user-credentials.png" />
-            </div>
-            <p>
-              Unified access to 80+ state-of-the-art <br />robust models via
-              Model Zoo
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="details">
-        <div class="box usage">
-          <p>Model Zoo</p>
-          <div class="divider">
-            <hr />
-          </div>
-          Check out the
-          <a href="https://github.com/RobustBench/robustbench#model-zoo">available models</a>
-          and our
-          <a href="https://github.com/RobustBench/robustbench#notebooks">Colab tutorials</a>.
-          <div class="codeblock">
-            <div class="vspace10"></div>
-            <!--
-# !pip install git+https://github.com/RobustBench/robustbench.git@v0.2.1
-from robustbench.utils import load_model
-# Load a model from the model zoo
-model = load_model(model_name='Rebuffi2021Fixing_70_16_cutmix_extra',
-                   dataset='cifar10',
-                   threat_model='Linf')
-
-# Evaluate the Linf robustness of the model using AutoAttack
-from robustbench.eval import benchmark
-clean_acc, robust_acc = benchmark(model,
-                                  dataset='cifar10',
-                                  threat_model='Linf')
-
-            -->
-            <!-- HTML generated using hilite.me -->
-            <div style="background: #ffffff; overflow:auto;width:auto;padding:.2em .6em;">
-              <pre style="margin: 0; line-height: 125%"><span style="color: #888888"># !pip install git+https://github.com/RobustBench/robustbench@v0.2.1</span>
-<span style="color: #849D61; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">robustbench.utils</span> <span style="color: #849D61; font-weight: bold">import</span> load_model
-<span style="color: #888888"># Load a model from the model zoo</span>
-model <span style="color: #1E1C1F">=</span> load_model(model_name<span style="color: #1E1C1F">=</span><span style="background-color: #fff0f0">&#39;Rebuffi2021Fixing_70_16_cutmix_extra&#39;</span>,
-                   dataset<span style="color: #1E1C1F">=</span><span style="background-color: #fff0f0">&#39;cifar10&#39;</span>,
-                   threat_model<span style="color: #1E1C1F">=</span><span style="background-color: #fff0f0">&#39;Linf&#39;</span>)
-
-<span style="color: #888888"># Evaluate the Linf robustness of the model using AutoAttack</span>
-<span style="color: #849D61; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">robustbench.eval</span> <span style="color: #849D61; font-weight: bold">import</span> benchmark
-clean_acc, robust_acc <span style="color: #1E1C1F">=</span> benchmark(model,
-                                  dataset<span style="color: #1E1C1F">=</span><span style="background-color: #fff0f0">&#39;cifar10&#39;</span>,
-                                  threat_model<span style="color: #1E1C1F">=</span><span style="background-color: #fff0f0">&#39;Linf&#39;</span>)
-</pre>
-            </div>
 
 
             <!-- HTML generated using hilite.me -->
@@ -312,145 +191,23 @@ clean_acc, robust_acc <span style="color: #1E1C1F">=</span> benchmark(model,
                 border-width: 0em 0em 0em 0em;
                 padding: 0.2em 0.6em;
               ">
-
               </pre>
             </div>
           </div>
         </div>
-        <div class="box images">
-          <p>Analysis</p>
-          <div class="divider">
-            <hr />
           </div>
-          Check out <a href="https://arxiv.org/abs/2010.09670">our paper</a> with a detailed analysis.
-          <div>
-            <!--          <div class="scroller analysis-images">-->
-            <img class="analysis" src="./images/aa_robustness_vs_venues_Linf.png" alt="robustness_vs_venues" />
-            <!--            <img-->
-            <!--              src="./images/aa_robustness_vs_standard_Linf.png"-->
-            <!--              alt="robustness_vs_clean"-->
-            <!--            />-->
-          </div>
-        </div>
+        </div> 
       </div>
       <div class="vspace10"></div>
     </section>
 
 
-    <div id="leaderboard" class="container button-list">
+    <section id="system">
       <div class="heading">
-        <u>
-          Available Leaderboards
-        </u>
-      </div>
-      <a class="btn btn-secondary" href="#div_cifar10_Linf_heading">CIFAR-10 (\( \ell_\infty\))</a>
-      <a class="btn btn-secondary" href="#div_cifar10_L2_heading">CIFAR-10 (\( \ell_2\))</a>
-      <a class="btn btn-secondary" href="#div_cifar10_corruptions_heading">CIFAR-10 (Corruptions)</a>
-      <a class="btn btn-secondary" href="#div_cifar100_Linf_heading">CIFAR-100 (\( \ell_\infty\))</a>
-      <a class="btn btn-secondary" href="#div_cifar100_corruptions_heading">CIFAR-100 (Corruptions)</a>
-      <a class="btn btn-secondary" href="#div_imagenet_Linf_heading">ImageNet (\( \ell_\infty\))</a>
-      <a class="btn btn-secondary" href="#div_imagenet_corruptions_heading">ImageNet (Corruptions: IN-C, IN-3DCC)</a>
-    </div>
-
-
-    <section class="container" id="div_cifar10_Linf_heading">
-      <div class="heading">
-        <p>
-<!--          <div style="opacity:0;">1<br>1<br>1<br>1</div> &lt;!&ndash; Needed to introduce a margin for the navigation bar between leaderboards &ndash;&gt;-->
-          Leaderboard:
-          <span class="heading-math">CIFAR-10, \( \ell_\infty = 8/255 \)</span>,
-          untargeted attack
-        </p>
+        <p>System Overview</p>
       </div>
 
-      <div id="div_cifar10_Linf"></div>
-    </section>
-
-    <section>
-      <div class="heading" id="div_cifar10_L2_heading">
-        <p>
-          <div style="opacity:0;">1<br>1<br>1<br>1</div> <!-- Needed to introduce a margin for the navigation bar between leaderboards -->
-          Leaderboard:
-          <span class="heading-math">CIFAR-10, \( \ell_2 = 0.5 \)</span>,
-          untargeted attack
-        </p>
-      </div>
-
-      <div id="div_cifar10_L2"></div>
-    </section>
-
-    <section>
-      <div class="heading" id="div_cifar10_corruptions_heading">
-        <p>
-          <div style="opacity:0;">1<br>1<br>1<br>1</div> <!-- Needed to introduce a margin for the navigation bar between leaderboards -->
-          Leaderboard:
-          <span class="heading-math">CIFAR-10, Common Corruptions</span>,
-          CIFAR-10-C
-        </p>
-      </div>
-
-      <div id="div_cifar10_corruptions"></div>
-    </section>
-
-    <section>
-      <div class="heading" id="div_cifar100_Linf_heading">
-        <p>
-          <div style="opacity:0;">1<br>1<br>1<br>1</div> <!-- Needed to introduce a margin for the navigation bar between leaderboards -->
-          Leaderboard:
-          <span class="heading-math">CIFAR-100, \( \ell_\infty = 8/255 \)</span>,
-          untargeted attack
-        </p>
-      </div>
-
-      <div id="div_cifar100_Linf"></div>
-    </section>
-
-    <section>
-      <div class="heading" id="div_cifar100_corruptions_heading">
-        <p>
-          <div style="opacity:0;">1<br>1<br>1<br>1</div> <!-- Needed to introduce a margin for the navigation bar between leaderboards -->
-          Leaderboard:
-          <span class="heading-math">CIFAR-100, Common Corruptions</span>,
-          CIFAR-100-C
-        </p>
-      </div>
-
-      <div id="div_cifar100_corruptions"></div>
-    </section>
-
-    <section>
-      <div class="heading" id="div_imagenet_Linf_heading">
-        <p>
-          <div style="opacity:0;">1<br>1<br>1<br>1</div> <!-- Needed to introduce a margin for the navigation bar between leaderboards -->
-          Leaderboard:
-          <span class="heading-math">ImageNet, \( \ell_\infty = 4/255 \)</span>,
-          untargeted attack
-        </p>
-      </div>
-
-      <div id="div_imagenet_Linf"></div>
-    </section>
-
-    <section>
-      <div class="heading" id="div_imagenet_corruptions_heading">
-        <p>
-          <div style="opacity:0;">1<br>1<br>1<br>1</div> <!-- Needed to introduce a margin for the navigation bar between leaderboards -->
-          Leaderboard:
-          <span class="heading-math">ImageNet, Common Corruptions (ImageNet-C, ImageNet-3DCC)</span>
-        </p>
-      </div>
-
-      <div id="div_imagenet_corruptions"></div>
-    </section>
-
-    <div class="vspace30"></div>
-
-    <section id="faq">
-      <div class="heading">
-        <p>FAQ</p>
-      </div>
-
-      <p class="qa-box">
+      <!-- <p class="qa-box">
         <span class="question">&#10148; How does the RobustBench leaderboard differ from the
           <a href="https://github.com/fra31/auto-attack">AutoAttack leaderboard</a>? 🤔
         </span>
@@ -537,7 +294,7 @@ clean_acc, robust_acc <span style="color: #1E1C1F">=</span> benchmark(model,
         <span class="answer">We will be happy to add a better attack or any adaptive evaluation
           that would complement our default standardized attacks!</span>
       </p>
-    </section>
+    </section> -->
 
 
 
