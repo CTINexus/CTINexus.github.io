@@ -16,7 +16,7 @@
   <meta charset="UTF-8" />
   <!--  <meta name="viewport" content="width=device-width, initial-scale=1" />-->
   <meta name="viewport" content="width=1024" />
-  <title>RobustBench: Adversarial robustness benchmark</title>
+  <title>CTINEXUS: Automatic Cyber Threat Intelligence Knowledge Graph Construction Using Large Language Models</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -41,7 +41,7 @@
   <nav class="navbar navbar-expand-md">
       <div class="container">
         <a class="navbar-brand" href="./index.html"
-          >RobustBench</a>
+          >CTINEXUS</a>
         <button
           class="navbar-toggler navbar-light"
           type="button"
@@ -81,9 +81,9 @@
   <header>
     <div class="header-block container">
       <div class="logo"><img src="./images/logo.png" alt="logo" /></div>
-      <div class="title">RobustBench</div>
+      <div class="title">CTINEXUS</div>
       <div class="description">
-        A standardized benchmark for adversarial robustness
+        Automatic Cyber Threat Intelligence Knowledge Graph Construction Using Large Language Models
       </div>
     </div>
   </header>
@@ -185,17 +185,17 @@ clean_acc, robust_acc = benchmark(model,
             <!-- HTML generated using hilite.me -->
             <div style="background: #ffffff; overflow:auto;width:auto;padding:.2em .6em;">
               <pre style="margin: 0; line-height: 125%"><span style="color: #888888"># !pip install git+https://github.com/RobustBench/robustbench@v0.2.1</span>
-<span style="color: #008800; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">robustbench.utils</span> <span style="color: #008800; font-weight: bold">import</span> load_model
+<span style="color: #849D61; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">robustbench.utils</span> <span style="color: #849D61; font-weight: bold">import</span> load_model
 <span style="color: #888888"># Load a model from the model zoo</span>
-model <span style="color: #333333">=</span> load_model(model_name<span style="color: #333333">=</span><span style="background-color: #fff0f0">&#39;Rebuffi2021Fixing_70_16_cutmix_extra&#39;</span>,
-                   dataset<span style="color: #333333">=</span><span style="background-color: #fff0f0">&#39;cifar10&#39;</span>,
-                   threat_model<span style="color: #333333">=</span><span style="background-color: #fff0f0">&#39;Linf&#39;</span>)
+model <span style="color: #1E1C1F">=</span> load_model(model_name<span style="color: #1E1C1F">=</span><span style="background-color: #fff0f0">&#39;Rebuffi2021Fixing_70_16_cutmix_extra&#39;</span>,
+                   dataset<span style="color: #1E1C1F">=</span><span style="background-color: #fff0f0">&#39;cifar10&#39;</span>,
+                   threat_model<span style="color: #1E1C1F">=</span><span style="background-color: #fff0f0">&#39;Linf&#39;</span>)
 
 <span style="color: #888888"># Evaluate the Linf robustness of the model using AutoAttack</span>
-<span style="color: #008800; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">robustbench.eval</span> <span style="color: #008800; font-weight: bold">import</span> benchmark
-clean_acc, robust_acc <span style="color: #333333">=</span> benchmark(model,
-                                  dataset<span style="color: #333333">=</span><span style="background-color: #fff0f0">&#39;cifar10&#39;</span>,
-                                  threat_model<span style="color: #333333">=</span><span style="background-color: #fff0f0">&#39;Linf&#39;</span>)
+<span style="color: #849D61; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">robustbench.eval</span> <span style="color: #849D61; font-weight: bold">import</span> benchmark
+clean_acc, robust_acc <span style="color: #1E1C1F">=</span> benchmark(model,
+                                  dataset<span style="color: #1E1C1F">=</span><span style="background-color: #fff0f0">&#39;cifar10&#39;</span>,
+                                  threat_model<span style="color: #1E1C1F">=</span><span style="background-color: #fff0f0">&#39;Linf&#39;</span>)
 </pre>
             </div>
 
@@ -456,11 +456,11 @@ clean_acc, robust_acc <span style="color: #333333">=</span> benchmark(model,
       <div
         style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.0em .0em .0em .0em;padding:.2em .6em;">
         <pre style="margin: 0; line-height: 125%"><span style="color: #555555; font-weight: bold">@article</span>{croce2020robustbench,
-    title<span style="color: #333333">=</span>{RobustBench: a standardized adversarial robustness benchmark},
-    author<span style="color: #333333">=</span>{Croce, Francesco <span style="color: #000000; font-weight: bold">and</span> Andriushchenko, Maksym <span style="color: #000000; font-weight: bold">and</span> Sehwag, Vikash <span style="color: #000000; font-weight: bold">and</span> Debenedetti, Edoardo <span style="color: #000000; font-weight: bold">and</span> Flammarion, Nicolas
+    title<span style="color: #1E1C1F">=</span>{RobustBench: a standardized adversarial robustness benchmark},
+    author<span style="color: #1E1C1F">=</span>{Croce, Francesco <span style="color: #000000; font-weight: bold">and</span> Andriushchenko, Maksym <span style="color: #000000; font-weight: bold">and</span> Sehwag, Vikash <span style="color: #000000; font-weight: bold">and</span> Debenedetti, Edoardo <span style="color: #000000; font-weight: bold">and</span> Flammarion, Nicolas
     <span style="color: #000000; font-weight: bold">and</span> Chiang, Mung <span style="color: #000000; font-weight: bold">and</span> Mittal, Prateek <span style="color: #000000; font-weight: bold">and</span> Matthias Hein},
-    journal<span style="color: #333333">=</span>{arXiv preprint arXiv:2010.09670},
-    year<span style="color: #333333">=</span>{2020}
+    journal<span style="color: #1E1C1F">=</span>{arXiv preprint arXiv:2010.09670},
+    year<span style="color: #1E1C1F">=</span>{2020}
 }</pre>
       </div>
 
