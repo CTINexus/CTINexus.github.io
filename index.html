@@ -213,8 +213,8 @@
         <div>
           <img class="analysis" src="./images/overview.png" alt="robustness_vs_venues" />
         </div>
-      </div>
         <strong>Overview of CTINEXUS.</strong> CTINEXUS comprises three phases. Phase 1, Security Triplet Extraction, enables endto-end extraction of cybersecurity triplets using in-context learning of LLM. Phase 2, Hierarchical Entity Alignment, reduces the redundancy of CSKG through coarse-grained grouping and fine-grained clustering. Phase 3, Long-Distance Relation Prediction, connects disjoint subgraphs by identifying central nodes and performing relation inference.
+      </div>
     </div>
 
     <div class="vspace50"></div>
@@ -248,16 +248,16 @@
 
   <div class="vspace50"></div>
   <div class="heading">
-    <p>Phase 2: Hierarchical Entity Alignment</p>
+    <p>Phase 3: Long-Distance Relation Prediction</p>
   </div>
   <div class="box images">
     <div class="divider">
       <hr />
     </div>
     <div>
-      <img class="analysis" src="./images/EA.png" alt="robustness_vs_venues" />
+      <img class="analysis" src="./images/LP.png" alt="robustness_vs_venues" />
     </div>
-    <strong>The design of CTINEXUS’s hierarchical entity alignment.</strong> The coarse-grained entity grouping module populates an ICL prompt to assign entity types to the extracted triplets according to the applied ontology. Entities with the same type are grouped together. The fine-grained entity merging module then uses an embedding-based technique to merge semantically similar entities within each group based on a predefined similarity threshold.
+    <strong>The design of CTINEXUS’s long-distance relation prediction.</strong> Phase 1 selects central entities (blue) and the topic entity (yellow) from separate subgraphs based on their degree centrality. Phaes 2 populates an ICL prompt to infer implicit relations between each central entity and the topic entity.
   </div>
 </div>
 
