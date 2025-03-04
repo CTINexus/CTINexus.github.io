@@ -273,7 +273,52 @@
     <strong>The design of CTINEXUS’s long-distance relation prediction.</strong> The coarse-grained entity grouping module populates an ICL prompt to assign entity types to the extracted triplets according to the applied ontology. Entities with the same type are grouped together. The fine-grained entity merging module then uses an embedding-based technique to merge semantically similar entities within each group based on a predefined similarity threshold.
   </div>
 </div>
+    <div class="vspace50"></div>
+  </section>
 
+  <div class="container">
+    <section id="findings">
+  <div class="heading">
+    <p>Takeaways</p>
+  </div>
+  <div class="box images">
+    <div class="divider">
+      <hr />
+    </div>
+    <div>
+      <!-- <img class="analysis" src="./images/LP.png" alt="robustness_vs_venues" /> -->
+    </div>
+    <ul>
+      <li>  <strong>Outperforms Existing Methods.</strong> 
+        CTINEXUS significantly surpasses two state-of-the-art baselines—EXTRACTOR (syntax/semantic role-based) and LADDER (fine-tuned model). For entity–relation (“triplet”) extraction, CTINEXUS achieves an F1 score of 87.65% versus EXTRACTOR’s 62.29%. In entity recognition, CTINEXUS attains an F1 score of 90.13%, compared to LADDER’s 71.13%.
+       </li>
+       <li>  <strong>High-Quality Knowledge Graph Construction. </strong> 
+        Beyond extracting more accurate triplets, CTINEXUS excels at creating cleaner, more connected knowledge graphs. Its hierarchical entity-alignment step removes redundant mentions with an F1 score above 99%, and its “long-distance relation” inference step adds missing links among distant entities with an F1 near 91%.
+       </li>
+       <li>  <strong>Effectiveness of Optimized In-Context Learning (ICL).</strong> 
+        <ul>
+          <li>  
+            Using two or three demonstration examples in the prompt yields strong gains, especially in recall, while avoiding excessive prompt length.
+           </li>
+           <li>  Sorting demonstration examples in ascending order of similarity (so the most similar example is placed last) consistently boosts performance, reflecting a “recency bias” in large language models.
+
+           </li>
+           <li>  When inferring entity labels, increasing from a few (4–8) demonstration examples improves accuracy, but adding too many examples can plateau or slightly reduce performance.
+           </li>
+        </ul>
+       </li>
+       <li>  <strong>Choice of Backbone Model. </strong> 
+        CTINEXUS was tested with GPT-4, GPT-3.5, Llama3, and Qwen2.5. GPT-4 provides the highest accuracy (e.g., 10+ percentage points above GPT-3.5 in triplet extraction), though it is also more expensive in tokens and runtime.
+       </li>
+       <li>  <strong>Embedding-Based Entity Merging. </strong> 
+        For consolidating duplicates, a similarity threshold of 0.6 and the “text-embedding-3” model yield the best precision (≈99.6%) without harming recall.
+       </li>
+       <li>  <strong> Efficiency Considerations. </strong> 
+        GPT-4 approximately doubles inference time and has higher token usage compared to GPT-3.5. Even so, CTINEXUS remains practical—most steps require only one LLM query per report, and the hierarchical merging uses lightweight embeddings rather than repeated LLM calls.
+       </li>
+    </ul>
+  </div>
+</div>
     <div class="vspace50"></div>
   </section>
 
