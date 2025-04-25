@@ -153,15 +153,15 @@
                   </a>
                   </span>
 
-                  <!-- <span class="link-block">
+                 <!-- <span class="link-block">
                     <a href="https://chengyutong2049.github.io/CTINexus-website/"
                         class="external-link button is-normal is-rounded is-dark">
                         <span class="icon">
                             <i class="far fa-images"></i>
                         </span>
-                        <span>Documentation</span>
+                        <span>Poster</span>
                     </a>
-                    </span> -->
+                    </span>  -->
 
               </div>
             </div>
@@ -225,7 +225,7 @@
           <hr />
         </div>
         <div>
-          <img class="analysis" src="./images/overview.png" alt="robustness_vs_venues" />
+          <img class="analysis" src="./images/overview.png" alt="robustness_vs_venues"  style="width: 50%; height: auto;"/>
         </div>
         <strong>Overview of CTINEXUS.</strong> CTINEXUS comprises three phases. Phase 1, Security Triplet Extraction, enables endto-end extraction of cybersecurity triplets using in-context learning of LLM. Phase 2, Hierarchical Entity Alignment, reduces the redundancy of CSKG through coarse-grained grouping and fine-grained clustering. Phase 3, Long-Distance Relation Prediction, connects disjoint subgraphs by identifying central nodes and performing relation inference.
       </div>
@@ -238,14 +238,14 @@
   <div class="container">
     <section id="phase1">
       <div class="heading">
-        <p>Phase 1: Security Triplet Extraction</p>
+        <p>Comparation with baselines</p> 
       </div>
     <div class="box images">
       <div class="divider">
         <hr />
       </div>
       <div>
-        <img class="analysis" src="./images/IE.png" alt="robustness_vs_venues" />
+        <img class="analysis" src="./images/compare.png" alt="robustness_vs_venues" />
       </div>
       <strong>Comparison of CTINEXUS’s ICL-based CTI knowledge extraction (left) and a multi-turn QA-based extraction (right).</strong> CTINEXUS consolidates task descriptions (including applied ontology), k selected demonstrations, and query into a single instruction for efficient cybersecurity triplet extraction. In contrast, the multi-turn QA paradigm requires multiple rounds of conversations with multiple prompts to extract different entities and relations, resulting in inefficiency.
     </div>
@@ -253,7 +253,7 @@
     <div class="vspace50"></div>
   </section>
 
-  
+<!--   
   <div class="container">
     <section id="phase2">
   <div class="heading">
@@ -286,7 +286,7 @@
     </div>
     <strong>The design of CTINEXUS’s long-distance relation prediction.</strong> The coarse-grained entity grouping module populates an ICL prompt to assign entity types to the extracted triplets according to the applied ontology. Entities with the same type are grouped together. The fine-grained entity merging module then uses an embedding-based technique to merge semantically similar entities within each group based on a predefined similarity threshold.
   </div>
-</div>
+</div> -->
     <div class="vspace50"></div>
   </section>
 
@@ -355,19 +355,19 @@
       <div class="vspace50"></div>
     </section> -->
 
-    <section id="contact">
+    <!-- <section id="contact">
       <div class="details">
         <div class="box2">
           <p>Collaboration</p>
           <div class="divider">
             <hr />
           </div>
-          <!-- We welcome any contribution in terms of both new robust models and
+           We welcome any contribution in terms of both new robust models and
           evaluations. Please check
           <a href="https://github.com/RobustBench/robustbench#how-to-contribute">here</a>
           for more details. -->
-          If you are conducting follow-up research in this area, we are more than happy to lend a hand. Any form of collaboration is welcome.🙂  
-        </div>
+          <!-- If you are conducting follow-up research in this area, we are more than happy to lend a hand. Any form of collaboration is welcome.🙂   -->
+        <!-- </div>
         <div class="box2">
           <p>Contact</p>
           <div class="divider">
@@ -378,7 +378,35 @@
         </div>
       </div>
     </section>
-  </div>
+  </div> --> 
+
+  <section id="citation">
+    <div class="heading">
+      <p>Citation</p>
+    </div>
+    <div class="divider">
+      <hr />
+    </div>
+    We hope our work serves as a foundation for further LLM applications in the CTI analysis community. If you find it helpful for your research, please consider citing our paper 😃:
+    <!-- @inproceedings{cheng2025ctinexusautomaticcyberthreat,
+      title={CTINexus: Automatic Cyber Threat Intelligence Knowledge Graph Construction Using Large Language Models}, 
+      author={Yutong Cheng and Osama Bajaber and Saimon Amanuel Tsegai and Dawn Song and Peng Gao},
+      booktitle={2025 IEEE European Symposium on Security and Privacy (EuroS\&P)},
+      year={2025},
+      organization={IEEE}
+} -->
+    <div
+      style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.0em .0em .0em .0em;padding:.2em .6em;">
+      <pre style="margin: 0; line-height: 125%"><span style="color: #555555; font-weight: bold">@inproceedings</span>{cheng2025ctinexusautomaticcyberthreat,
+  title<span style="color: #333333">=</span>{CTINexus: Automatic Cyber Threat Intelligence Knowledge Graph Construction Using Large Language Models},
+  author<span style="color: #333333">=</span>{Yutong Cheng <span style="color: #000000; font-weight: bold">and</span> Osama Bajaber <span style="color: #000000; font-weight: bold">and</span> Saimon Amanuel Tsegai <span style="color: #000000; font-weight: bold">and</span> Debenedetti, Edoardo <span style="color: #000000; font-weight: bold">and</span> Dawn Song
+  <span style="color: #000000; font-weight: bold">and</span> Peng Gao <span style="color: #000000; font-weight: bold"></span>},
+  booktitle<span style="color: #333333">=</span>{2025 IEEE European Symposium on Security and Privacy (EuroS\&P)},
+  year<span style="color: #333333">=</span>{2025}
+}</pre>
+    </div>
+
+  </section>
 
  <div class="vspace50"></div>
 
