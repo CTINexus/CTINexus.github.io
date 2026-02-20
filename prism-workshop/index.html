@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTINexus - PRISM Workshop Tutorial 2026</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --card-bg: #f8fafc;
+            --text-primary: #1a202c;
+            --text-secondary: #4a5568;
+            --accent-primary: #4f8ff7;
+            --accent-secondary: #7cc6ff;
+            --accent-gradient: linear-gradient(135deg, #4f8ff7 0%, #7cc6ff 100%);
+            --border-color: #e2e8f0;
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+            --shadow-glow: 0 10px 24px -14px rgba(79, 143, 247, 0.45);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            color: var(--text-primary);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 0 6rem;
+            position: relative;
+            background: radial-gradient(circle at top right, rgba(79, 143, 247, 0.04), transparent 42%),
+                        radial-gradient(circle at bottom left, rgba(124, 198, 255, 0.03), transparent 42%);
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(96, 165, 250, 0.1);
+            color: var(--accent-primary);
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(96, 165, 250, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: none;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin-bottom: 3rem;
+        }
+
+        /* Event Details Cards */
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .detail-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .detail-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
+            border-color: var(--accent-primary);
+        }
+
+        .detail-icon {
+            width: 3rem;
+            height: 3rem;
+            background: rgba(96, 165, 250, 0.1);
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            color: var(--accent-primary);
+        }
+
+        .detail-info h3 {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+
+        .detail-info p {
+            font-size: 1.125rem;
+            font-weight: 600;
+        }
+
+        /* Abstract Section */
+        .section {
+            padding: 5rem 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--accent-gradient);
+            border-radius: 2px;
+        }
+
+        .abstract-content {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 900px;
+        }
+
+        /* Schedule Section */
+        .schedule-timeline {
+            position: relative;
+            max-width: 800px;
+            margin-left: 1rem;
+        }
+
+        .schedule-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border-color);
+        }
+
+        .schedule-item {
+            position: relative;
+            padding-left: 2.5rem;
+            padding-bottom: 2.5rem;
+        }
+
+        .schedule-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .schedule-marker {
+            position: absolute;
+            left: -5px;
+            top: 0.25rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent-primary);
+            box-shadow: 0 0 0 4px rgba(79, 143, 247, 0.18);
+        }
+
+        .time-slot {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            color: var(--accent-primary);
+            margin-bottom: 0.5rem;
+            display: inline-block;
+            background: rgba(96, 165, 250, 0.1);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .schedule-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .schedule-desc {
+            color: var(--text-secondary);
+        }
+
+        /* Speakers Section */
+        .speakers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .speaker-card {
+            background: var(--card-bg);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .speaker-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent-secondary);
+        }
+
+        .speaker-header {
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .speaker-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent-primary);
+        }
+
+        .speaker-info h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .speaker-role {
+            color: var(--accent-primary);
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .speaker-bio {
+            padding: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .social-links {
+            padding: 0 2rem 2rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-btn {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.05); /* Adjusted for light background */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: all 0.2s;
+        }
+
+        .social-btn:hover {
+            background: var(--accent-primary);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        /* Setup & Resources Grid */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .resource-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column; 
+            justify-content: space-between;
+        }
+
+        .downloads-card {
+            margin-top: 1rem;
+            padding: 0.95rem 1.1rem;
+            border-radius: 0.85rem;
+            border: 1px solid rgba(79, 143, 247, 0.24);
+            background: linear-gradient(135deg, rgba(79, 143, 247, 0.08), rgba(124, 198, 255, 0.08));
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 0.9rem;
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+        }
+
+        .downloads-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(79, 143, 247, 0.42);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .downloads-content {
+            min-width: 0;
+            display: inline-flex;
+            align-items: baseline;
+            gap: 0.75rem;
+            flex: 1;
+        }
+
+        .downloads-label {
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-secondary);
+            font-weight: 700;
+            margin: 0;
+            white-space: nowrap;
+        }
+
+        .downloads-value {
+            font-size: 1.35rem;
+            font-weight: 800;
+            line-height: 1.1;
+            color: var(--text-primary);
+            white-space: nowrap;
+        }
+
+        .downloads-status {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+            background: rgba(96, 165, 250, 0.15);
+            border: 1px solid rgba(96, 165, 250, 0.22);
+            border-radius: 999px;
+            padding: 0.25rem 0.6rem;
+            white-space: nowrap;
+        }
+
+        .downloads-icon {
+            width: 2.4rem;
+            height: 2.4rem;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(96, 165, 250, 0.14);
+            color: var(--accent-primary);
+            flex-shrink: 0;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .check-icon {
+            color: #10b981; /* Emerald green */
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--accent-gradient);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 0.75rem;
+            font-weight: 700;
+            font-size: 1.125rem;
+            margin-top: 1rem;
+            box-shadow: 0 4px 14px rgba(79, 143, 247, 0.34);
+            transition: all 0.2s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(79, 143, 247, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 0;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .hero {
+                padding: 4rem 0;
+            }
+            .downloads-card {
+                gap: 0.6rem;
+                flex-wrap: wrap;
+            }
+            .downloads-content {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <span class="hero-badge"><i class="fas fa-layer-group"></i>&nbsp; PRISM Workshop Tutorial 2026</span>
+            <h1 class="hero-title">CTINexus: Automatic Cyber Threat Intelligence Knowledge Graph Construction Using LLMs</h1>
+            <p class="hero-subtitle">Join us for a deep dive into using Large Language Models to automate the extraction and structuring of CTI data into actionable Knowledge Graphs.</p>
+            
+            <div class="details-grid">
+                <div class="detail-card">
+                    <div class="detail-icon"><i class="far fa-calendar-alt"></i></div>
+                    <div class="detail-info">
+                        <h3>Date</h3>
+                        <p>February 23, 2026</p>
+                    </div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-icon"><i class="far fa-clock"></i></div>
+                    <div class="detail-info">
+                        <h3>Time</h3>
+                        <p>5:00 PM - 5:30 PM PST</p>
+                    </div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="detail-info">
+                        <h3>Location</h3>
+                        <p>Bay Room</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </header>
+
+    <!-- Abstract -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Overview</h2>
+            <div class="abstract-content">
+                <p>
+                    Cyber threat intelligence (CTI) is often communicated through long textual reports, requiring analysts to manually extract relevant information. This tutorial introduces <strong>CTINexus</strong>, an open-source system that converts individual CTI reports into structured cybersecurity knowledge graphs using large language models.
+                </p>
+                <br>
+                <p>
+                    CTINexus provides a robust pipeline that extracts entities such as malware names, vulnerabilities, threat actors, TTPs, and infrastructure details, identifying explicit relationships within the report text. This streamlines threat intelligence analysis, moving beyond manual relationship tracing. The tool has been adopted by various industry partners within their threat intelligence analysis workflows.
+                </p>
+                <br>
+                <p>
+                    Participants will learn how CTINexus processes CTI reports, from input text through extraction, entity typing, and graph construction. The session will include a demonstration of running the pipeline, interpreting output, and exploring results using a provided web interface to visualize and inspect extracted relationships.
+                </p>
+                <br>
+                <p>
+                    This tutorial is ideal for security professionals, students, and researchers working with CTI sources who seek a systematic way to structure intelligence for inspection, reasoning, and downstream analysis. Attendees will gain a working understanding of CTINexus and its utility in transforming unstructured narratives into actionable insights.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule -->
+    <section class="section" style="background: var(--card-bg);"> <!-- Adjusted for light theme -->
+        <div class="container">
+            <h2 class="section-title">Schedule</h2>
+            <div class="schedule-timeline">
+                <div class="schedule-item">
+                    <div class="schedule-marker"></div>
+                    <span class="time-slot">5:00 - 5:05 PM</span>
+                    <h3 class="schedule-title">Introduction to CTI</h3>
+                    <p class="schedule-desc">The problem with unstructured CTI data and the need for structured representation.</p>
+                </div>
+                <div class="schedule-item">
+                    <div class="schedule-marker"></div>
+                    <span class="time-slot">5:05 - 5:10 PM</span>
+                    <h3 class="schedule-title">The CTINexus Architecture</h3>
+                    <p class="schedule-desc">Deep dive into the LLM-based extraction pipeline, ontology mapping, and graph construction logic.</p>
+                </div>
+                <div class="schedule-item">
+                    <div class="schedule-marker"></div>
+                    <span class="time-slot">5:10 - 5:20 PM</span>
+                    <h3 class="schedule-title">Live Demo: From Report to Graph</h3>
+                    <p class="schedule-desc">Interactive demonstration processing a live CTI report and visualizing the resulting Knowledge Graph.</p>
+                </div>
+                <div class="schedule-item">
+                    <div class="schedule-marker"></div>
+                    <span class="time-slot">5:25 - 5:30 PM</span>
+                    <h3 class="schedule-title">Q&A and Future Work</h3>
+                    <p class="schedule-desc">Open floor for questions, discussion on limitations, and roadmap.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Speakers -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Organizers</h2>
+            <div class="speakers-grid">
+                <!-- Speaker 1 -->
+                <div class="speaker-card">
+                    <div class="speaker-header">
+                        <img src="images/saimon.png" alt="Alex Rivera" class="speaker-img">
+                        <div class="speaker-info">
+                            <h3>Saimon Amanuel Tsegai</h3>
+                            <p class="speaker-role">PhD Student - Virginia Tech</p>
+                        </div>
+                    </div>
+                    <p class="speaker-bio">
+                        Saimon Amanuel Tsegai is a Ph.D. student in Computer Science at Virginia Tech, advised by Prof. Peng Gao, and a Graduate Fellow with the 
+                        Commonwealth Cyber Initiative (CCI). His research lies at the intersection of system security, cyber threat intelligence, and AI, 
+                        with a focus on building interpretable and practitioner-oriented security mechanisms. He is the co-author and lead maintainer of CTINexus. 
+                        He led the engineering effort to transform the system from a research artifact into a deployment-ready tool, architecting the extraction pipeline 
+                        and developing the interactive visualization interface used for knowledge graph inspection. His broader work has appeared in leading peer-reviewed 
+                        venues including VLDB and Euro S&P, and he is a recipient of multiple distinctions, including the CCI Cyber Innovation Scholarship and the Alibaba 
+                        Cloud GenAI Ambassador Award.
+                    </p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/saimon-tsegai" target="_blank" rel="noopener noreferrer" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+                        <!-- <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a> -->
+                        <a href="https://49simoney.vercel.app" target="_blank" rel="noopener noreferrer" class="social-btn"><i class="fas fa-globe"></i></a>
+                        <a href="mailto:saimon.tsegai@vt.edu" target="_blank" rel="noopener noreferrer" class="social-btn"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+
+                <!-- Speaker 2 -->
+                <div class="speaker-card">
+                    <div class="speaker-header">
+                        <img src="images/peng.png" alt="Sarah Chen" class="speaker-img">
+                        <div class="speaker-info">
+                            <h3>Dr. Peng Gao</h3>
+                            <p class="speaker-role">Assistant Professor - Virginia Tech</p>
+                        </div>
+                    </div>
+                    <p class="speaker-bio">
+                        Peng Gao is an Assistant Professor in the Department of Computer Science at Virginia Tech and a Faculty Fellow with the Commonwealth Cyber Initiative (CCI). 
+                        He is an IEEE Senior Member. His work focuses on designing scalable, intelligent, secure, and trustworthy solutions to address real-world security, privacy, 
+                        and computing challenges. His research has been published at multiple top-tier venues and has been demonstrated through multiple patents and industry adoption. He has received multiple honors and awards, including the 2018 CSAW 
+                        Applied Research Finalist, the 2020 Microsoft Security AI Research Award, the 2021 Amazon Research Award, the 2021 Cisco Research Award, the 2021 Meta Research Award Finalist, 
+                        the 2022 Amazon-VT Initiative Faculty Research Award, the 2025 Google Academic Research Award, and the 2025 NSF CAREER Award.
+                    </p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/penggao32/" target="_blank" rel="noopener noreferrer" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+                        <!-- <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a> -->
+                        <a href="https://people.cs.vt.edu/penggao/" target="_blank" rel="noopener noreferrer" class="social-btn"><i class="fas fa-globe"></i></a>
+                        <a href="mailto:penggao@vt.edu" target="_blank" rel="noopener noreferrer" class="social-btn"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources & Setup -->
+    <section class="section" id="resources" style="background: var(--card-bg);"> <!-- Adjusted for light theme -->
+        <div class="container">
+            <h2 class="section-title">Resources & Setup</h2>
+            <div class="resources-grid">
+                <!-- Setup -->
+                <div class="resource-card">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem;"><i class="fas fa-clipboard-list"></i>&nbsp; Workshop Essentials</h3>
+                    <p style="font-weight: 600; margin-bottom: 0.75rem; color: var(--text-primary);">What to prepare:</p>
+                    <div class="checklist">
+                        <div class="checklist-item">
+                            <i class="fas fa-laptop check-icon"></i>
+                            <span>A laptop</span>
+                        </div>
+                        <div class="checklist-item">
+                            <i class="fab fa-python check-icon"></i>
+                            <span>Python 3.10+ installed</span>
+                        </div>
+                        <div class="checklist-item">
+                            <i class="fas fa-code check-icon"></i>
+                            <span>VS Code (or preferred IDE)</span>
+                        </div>
+                    </div>
+                    <p style="font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.75rem; color: var(--text-primary);">What we provide:</p>
+                    <div class="checklist">
+                        <div class="checklist-item">
+                            <i class="fas fa-key check-icon"></i>
+                            <span>Temporary OpenAI API key for demo</span>
+                        </div>
+                        <div class="checklist-item">
+                            <i class="fas fa-box-open check-icon"></i>
+                            <span>Ready-to-use code environment & example reports</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Links -->
+                <div class="resource-card" style="border-color: var(--accent-primary);">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">CTINexus Toolkit</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                        Explore and test out our open-source code and datasets on GitHub. Don't forget to star ⭐ the repo to stay updated! Read our paper for in-depth details, and workshop presentation slides will be available after the event.
+                    </p>
+                    <a href="https://github.com/peng-gao-lab/ctinexus" target="_blank" rel="noopener noreferrer" class="cta-button" style="width: 100%; justify-content: center;">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                    <div class="downloads-card" aria-label="CTINexus PyPI download stats">
+                        <div class="downloads-content">
+                            <div class="downloads-label">Downloads</div>
+                            <div id="downloads-value" class="downloads-value">Loading...</div>
+                        </div>
+                        <div class="downloads-status">Live</div>
+                        <div class="downloads-icon">
+                            <i class="fas fa-download"></i>
+                        </div>
+                    </div>
+                    <div style="margin-top: 1rem; display: flex; gap: 1rem;">
+                        <a href="https://ccsnow127.github.io/assets/pdf/CTINexus.pdf" target="_blank" rel="noopener noreferrer" style="flex: 1; padding: 0.75rem; text-align: center; background: rgba(0,0,0,0.05); border-radius: 0.5rem; font-weight: 600;">
+                            <i class="fas fa-file-pdf"></i> Paper
+                        </a>
+                        <a style="flex: 1; padding: 0.75rem; text-align: center; background: rgba(0,0,0,0.05); border-radius: 0.5rem; font-weight: 600; cursor: default; pointer-events: none;">
+                            <i class="fas fa-file-powerpoint"></i> Slides (coming soon)
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 CTINexus Team. Presented at PRISM Workshop, NDSS Symposium.</p>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            const valueEl = document.getElementById("downloads-value");
+            if (!valueEl) return;
+
+            const full = new Intl.NumberFormat("en-US");
+
+            function parseCount(value) {
+                if (typeof value === "number" && Number.isFinite(value)) return Math.round(value);
+                if (typeof value === "string") {
+                    const cleaned = value.replace(/,/g, "").trim();
+                    if (/^\d+(\.\d+)?[kKmMbB]$/.test(cleaned)) {
+                        const suffix = cleaned.slice(-1).toLowerCase();
+                        const base = Number(cleaned.slice(0, -1));
+                        const mult = suffix === "k" ? 1e3 : suffix === "m" ? 1e6 : 1e9;
+                        if (Number.isFinite(base)) return Math.round(base * mult);
+                    }
+                    const asNum = Number(cleaned);
+                    if (Number.isFinite(asNum)) return Math.round(asNum);
+                }
+                return null;
+            }
+
+            function deepFindCount(obj) {
+                if (!obj || typeof obj !== "object") return null;
+                const keys = ["total_downloads", "downloads", "download_count", "total"];
+                for (let i = 0; i < keys.length; i += 1) {
+                    const v = parseCount(obj[keys[i]]);
+                    if (v !== null) return v;
+                }
+                const values = Array.isArray(obj) ? obj : Object.values(obj);
+                for (let i = 0; i < values.length; i += 1) {
+                    const v = values[i];
+                    const parsed = parseCount(v);
+                    if (parsed !== null) return parsed;
+                    if (v && typeof v === "object") {
+                        const nested = deepFindCount(v);
+                        if (nested !== null) return nested;
+                    }
+                }
+                return null;
+            }
+
+            function parseBadgeSvg(svgText) {
+                const tokens = svgText.match(/\b\d[\d,.]*(?:\.\d+)?[kKmMbB]?\b/g) || [];
+                for (let i = tokens.length - 1; i >= 0; i -= 1) {
+                    const parsed = parseCount(tokens[i]);
+                    if (parsed !== null) return parsed;
+                }
+                return null;
+            }
+
+            function renderCount(total) {
+                valueEl.textContent = full.format(total);
+                valueEl.title = full.format(total) + " total downloads";
+            }
+
+            fetch("https://pepy.tech/api/v2/projects/ctinexus")
+                .then(function (res) {
+                    if (!res.ok) throw new Error("Failed Pepy API");
+                    return res.json();
+                })
+                .then(function (data) {
+                    const total = deepFindCount(data);
+                    if (total === null) throw new Error("No numeric count in Pepy API");
+                    renderCount(total);
+                })
+                .catch(function () {
+                    return fetch("https://static.pepy.tech/personalized-badge/ctinexus?period=total&units=INTERNATIONAL_SYSTEM&left_color=GRAY&right_color=BRIGHTGREEN&left_text=Downloads")
+                        .then(function (res) {
+                            if (!res.ok) throw new Error("Failed Pepy badge");
+                            return res.text();
+                        })
+                        .then(function (svg) {
+                            const total = parseBadgeSvg(svg);
+                            if (total === null) throw new Error("No numeric count in badge");
+                            renderCount(total);
+                        });
+                })
+                .catch(function () {
+                    valueEl.textContent = "--";
+                });
+        })();
+    </script>
+
+</body>
+</html>
