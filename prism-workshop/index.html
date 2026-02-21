@@ -366,6 +366,10 @@
             gap: 2rem;
         }
 
+        .registration-grid {
+            align-items: stretch;
+        }
+
         .resource-card {
             background: var(--card-bg);
             padding: 2rem;
@@ -374,6 +378,12 @@
             display: flex;
             flex-direction: column; 
             justify-content: space-between;
+        }
+
+        .registration-card {
+            justify-content: flex-start;
+            gap: 0.75rem;
+            height: 100%;
         }
 
         .downloads-card {
@@ -444,6 +454,55 @@
             flex-shrink: 0;
         }
 
+        .registration-link {
+            margin-top: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+            border: 1px solid rgba(79, 143, 247, 0.28);
+            background: rgba(79, 143, 247, 0.08);
+            border-radius: 0.65rem;
+            padding: 0.65rem 0.9rem;
+        }
+
+        .registration-link:hover {
+            background: rgba(79, 143, 247, 0.14);
+            border-color: rgba(79, 143, 247, 0.4);
+        }
+
+        .qr-placeholder {
+            width: min(280px, 100%);
+            aspect-ratio: 1 / 1;
+            border: 2px dashed rgba(79, 143, 247, 0.5);
+            border-radius: 1rem;
+            background: linear-gradient(135deg, rgba(79, 143, 247, 0.08), rgba(124, 198, 255, 0.06));
+            display: grid;
+            place-items: center;
+            text-align: center;
+            color: var(--text-secondary);
+            font-weight: 600;
+            padding: 1rem;
+            margin: 0 auto;
+        }
+
+        .qr-image {
+            width: min(220px, 100%);
+            aspect-ratio: 1 / 1;
+            object-fit: contain;
+            border: 1px solid rgba(79, 143, 247, 0.28);
+            border-radius: 1rem;
+            background: white;
+            padding: 0.35rem;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .qr-fallback {
+            display: none;
+        }
+
         .checklist-item {
             display: flex;
             align-items: center;
@@ -482,6 +541,13 @@
             border-top: 1px solid var(--border-color);
             text-align: center;
             color: var(--text-secondary);
+        }
+
+        .section-separator {
+            border: 0;
+            border-top: 1px solid var(--border-color);
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         @media (max-width: 768px) {
@@ -673,7 +739,11 @@
                         </div>
                         <div class="checklist-item">
                             <i class="fab fa-python check-icon"></i>
-                            <span>Python 3.10+ installed</span>
+                            <span>Python >=3.10, <3.14 installed</span>
+                        </div>
+                        <div class="checklist-item">
+                            <i class="fas fa-bolt check-icon"></i>
+                            <span><code>uv</code> for fast install (<a href="https://docs.astral.sh/uv/getting-started/installation/" target="_blank" rel="noopener noreferrer" style="color: var(--accent-primary); text-decoration: underline;">install guide</a>)<br><code>pip</code> is perfectly fine too</span>
                         </div>
                         <div class="checklist-item">
                             <i class="fas fa-code check-icon"></i>
@@ -724,6 +794,39 @@
             </div>
         </div>
     </section>
+
+    <!-- Registration -->
+    <section class="section" id="registration">
+        <div class="container">
+            <h2 class="section-title">Registration (Optional)</h2>
+            <div class="resources-grid registration-grid">
+                <div class="resource-card registration-card">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem;"><i class="fas fa-user-check"></i>&nbsp; Demo Access</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 0.8rem;">
+                        We will give out free access keys for the demo to make setup easier, help you follow along, and test our tool.
+                    </p>
+                    <p style="color: var(--text-secondary);">
+                        If you wish to receive free access to OpenAI keys, register here using the link or by scanning the QR code.
+                    </p>
+                    <a href="https://forms.gle/QMGUGF6sSRMyxyzeA" target="_blank" rel="noopener noreferrer" class="registration-link">
+                        <i class="fas fa-up-right-from-square"></i> Register
+                    </a>
+                </div>
+                <div class="resource-card registration-card" style="border-color: var(--accent-primary);">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem;"><i class="fas fa-qrcode"></i>&nbsp; Registration QR Code</h3>
+                    <div>
+                        <img src="images/registration-qr.png" alt="Registration QR code" class="qr-image" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                        <div class="qr-placeholder qr-fallback">
+                            QR code placeholder<br>
+                            (replace with your uploaded image)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="section-separator">
 
     <section class="prism-reference">
         <div class="container">
