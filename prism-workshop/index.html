@@ -97,15 +97,6 @@
             margin-bottom: 1.25rem;
         }
 
-        .hero-guide-link {
-            margin-top: -2.2rem;
-            margin-bottom: 2.8rem;
-        }
-
-        .hero-guide-link .registration-link {
-            margin-top: 0;
-        }
-
         .prism-reference {
             padding: 1.5rem 0 3rem;
         }
@@ -379,6 +370,12 @@
             align-items: stretch;
         }
 
+        .registration-grid > .registration-card:only-child {
+            max-width: 560px;
+            width: 100%;
+            justify-self: start;
+        }
+
         .resource-card {
             background: var(--card-bg);
             padding: 2rem;
@@ -481,6 +478,19 @@
             border-color: rgba(79, 143, 247, 0.4);
         }
 
+        .registration-link.is-disabled {
+            cursor: default;
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        .registration-closed {
+            margin-top: 0.25rem;
+            color: #b42318;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
         .qr-placeholder {
             width: min(280px, 100%);
             aspect-ratio: 1 / 1;
@@ -578,6 +588,9 @@
                 flex-direction: column;
                 align-items: flex-start;
             }
+            .registration-grid > .registration-card:only-child {
+                max-width: none;
+            }
         }
     </style>
 </head>
@@ -614,12 +627,6 @@
                 </div>
             </div>
 
-            <div class="hero-guide-link">
-                <a href="https://docs.google.com/document/d/1n78IToamnVpDh2kV87lEzWT7pDVovZGgsRfqImmWuR8/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="registration-link">
-                    <i class="fas fa-up-right-from-square"></i> Tutorial Hands-On Demo Guide
-                </a>
-            </div>
-            
         </div>
     </header>
 
@@ -801,8 +808,8 @@
                         <a href="https://ccsnow127.github.io/assets/pdf/CTINexus.pdf" target="_blank" rel="noopener noreferrer" style="flex: 1; padding: 0.75rem; text-align: center; background: rgba(0,0,0,0.05); border-radius: 0.5rem; font-weight: 600;">
                             <i class="fas fa-file-pdf"></i> Paper
                         </a>
-                        <a style="flex: 1; padding: 0.75rem; text-align: center; background: rgba(0,0,0,0.05); border-radius: 0.5rem; font-weight: 600; cursor: default; pointer-events: none;">
-                            <i class="fas fa-file-powerpoint"></i> Slides (coming soon)
+                        <a href="https://docs.google.com/presentation/d/1fp11IRh14c3FQysdSHxg_vlkCRmYvHqUaLixcR0Hxwg/edit?usp=sharing" target="_blank" rel="noopener noreferrer" style="flex: 1; padding: 0.75rem; text-align: center; background: rgba(0,0,0,0.05); border-radius: 0.5rem; font-weight: 600;">
+                            <i class="fas fa-file-powerpoint"></i> Slides
                         </a>
                     </div>
                 </div>
@@ -820,22 +827,14 @@
                     <p style="color: var(--text-secondary); margin-bottom: 0.8rem;">
                         We will give out free access keys for the demo to make setup easier, help you follow along, and test our tool.
                     </p>
-                    <p style="color: var(--text-secondary);">
-                        If you wish to receive free access to OpenAI keys, register here using the link or by scanning the QR code.
+                    <p style="color: var(--text-secondary); margin-bottom: 0.25rem;">
+                        For a minimal, easy-to-follow guide, use
+                        <a href="https://docs.google.com/document/d/1n78IToamnVpDh2kV87lEzWT7pDVovZGgsRfqImmWuR8/edit?usp=sharing" target="_blank" rel="noopener noreferrer" style="color: var(--accent-primary); text-decoration: underline;">this tutorial guide</a>.
                     </p>
-                    <a href="https://forms.gle/6oXEyLW6zqQsXMyt5" target="_blank" rel="noopener noreferrer" class="registration-link">
+                    <a class="registration-link is-disabled" aria-disabled="true">
                         <i class="fas fa-up-right-from-square"></i> Register
                     </a>
-                </div>
-                <div class="resource-card registration-card" style="border-color: var(--accent-primary);">
-                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem;"><i class="fas fa-qrcode"></i>&nbsp; Registration QR Code</h3>
-                    <div>
-                        <img src="images/registration-qr.png" alt="Registration QR code" class="qr-image" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
-                        <div class="qr-placeholder qr-fallback">
-                            QR code placeholder<br>
-                            (replace with your uploaded image)
-                        </div>
-                    </div>
+                    <div class="registration-closed">Registration has ended.</div>
                 </div>
             </div>
         </div>
@@ -931,7 +930,7 @@
                     renderCount(total);
                 })
                 .catch(function () {
-                    return fetch("https://static.pepy.tech/personalized-badge/ctinexus?period=total&units=INTERNATIONAL_SYSTEM&left_color=GRAY&right_color=BRIGHTGREEN&left_text=Downloads")
+                    return fetch("https://img.shields.io/pepy/dt/ctinexus?color=green&label=Downloads")
                         .then(function (res) {
                             if (!res.ok) throw new Error("Failed Pepy badge");
                             return res.text();
